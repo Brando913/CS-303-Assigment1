@@ -4,22 +4,6 @@
 
 #include "Functions.h"
 
-void readArrayFromFile(int*& arr, int& size, const string& filename) {
-    ifstream file(filename);
-    if (!file) {
-        throw runtime_error("Failed to open the file");
-    }
-    size = 0;
-    while (!file.eof()) {
-        int temp;
-        file >> temp;
-        if (file) {
-            addValue(arr, size, temp);
-        }
-    }
-    file.close();
-}
-
 int main() {
     int* arr = nullptr;
     int size = 0;
