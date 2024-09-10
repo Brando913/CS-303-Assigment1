@@ -8,25 +8,31 @@ int main() {
     int* arr = nullptr;
     int size = 0;
 
-    //opens reads file and creates array
-    readArrayFromFile(arr, size, "input.txt"); 
-
+    readArrayFromFile(arr, size, "input.txt"); // Replace with the actual file path
+    //test to see if array is correct
+   /*
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << endl;
+    }
+    */
     char userChoice = '0';
     int findValue = 0, Index = 0, newInt;
-
     while (userChoice != 'q') {
         try {
-            //outputs menu for user to pick the right option
             cout << "MENU" << endl;
             cout << "1. Find value\n" << "2. Change number\n" << "3. Add number to end of line\n" << "4. remove number\n" << "q. Quit" << endl;
             cin >> userChoice;
-
             //checks for all options for choices 
             if (userChoice == '1') {
-                cout << "enter to find value to find index in array: ";
+                cout << "Enter to find value to find index in array: ";
                 cin >> findValue;
                 int Index = findIndex(arr, size, findValue);
-                cout << Index << endl;
+                if (Index == -1) {
+                    cout << "Number not found" << endl;
+                }
+                else {
+                    cout << Index << endl;
+                }
             }
             else if (userChoice == '2') {
                 cout << "Enter index of number to modify: ";
@@ -49,7 +55,7 @@ int main() {
                 cout << "Enter index to remove: ";
                 cin >> Index;
                 removeValue(arr, size, Index);
-                //test for correct array  
+                //test for correct array deletion 
                 /*
                 for (int i = 0; i < size; i++) {
                     cout << arr[i] << endl;
@@ -61,6 +67,5 @@ int main() {
             cout << "Error" << endl;
         }
     }
-    delete arr;
     return 0;
 }
